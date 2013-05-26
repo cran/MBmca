@@ -1,9 +1,9 @@
 Package: MBmca
 Type: Package
 Title: Nucleic Acid Melting Curve Analysis on Microbead Surfaces with R
-Version: 0.0.1
-Depends: R (>= 2.1), robustbase
-Date: 2012-08-31
+Version: 0.0.2
+Depends: R (>= 2.15.1), robustbase (>= 0.9)
+Date: 2013-05-26
 Author: Stefan Roediger
 Maintainer: Stefan Roediger <stefan_roediger@gmx.de>
 Description: The MBmca package provides data sets and lightweight
@@ -11,6 +11,7 @@ Description: The MBmca package provides data sets and lightweight
         presentation on microbead surfaces.
 License: GPL (>= 2)
 URL: http://www.r-project.org
-Packaged: 2012-08-31 08:18:20 UTC; tux
+Packaged: 2013-05-28 13:43:04 UTC; tux
+NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2012-08-31 12:55:07
+Date/Publication: 2013-05-28 16:05:10
