@@ -20,8 +20,8 @@ smoothed curves and derivatives are available too.
 \tabular{ll}{
 Package: \tab MBmca\cr
 Type: \tab Package\cr
-Version: \tab 0.0.2\cr
-Date: \tab 2013-05-26\cr
+Version: \tab 0.0.2-1\cr
+Date: \tab 2013-05-30\cr
 License: GPL (>= 2)
 }
 

@@ -22,7 +22,7 @@ were Atto 647N and BHQ2.
     \item{\code{SERCA2.no.Q.w.dT20}}{a numeric vector, SERCA2 without quencher-labeled detection
 				      probe and Poly(dA)20 detection probe.}
     \item{\code{PolydA20.w.Q}}{a numeric vector, Poly(dT)20 with fluorescent Poly(dA)20 detection
-				probe (quencher labeled).}
+			probe (quencher labeled).}
     \item{\code{aCS.w.Q.w.dT20}}{a numeric vector, artificial Control Sequence without 
 				 quencher-labeled detection probe and fluorescent
 				 Poly(dA)20 detection probe.}

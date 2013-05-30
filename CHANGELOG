@@ -1,19 +1,4 @@
-Changes from Version 0.0.1 to 0.0.2 [May 26 2013] 
+Changes from Version 0.0.2 to 0.0.2-1 [May 30 2013] 
 
 * Bug fix release
-* Refinements of code and cleanup for publication in The R Journal (ISSN: 2073-4859)
-* NOTE: Adjusted name of variable to be more intuitive
-* Rearranged the output of diffQ and diffQ2 according to importance
-* Adjusted names of variables and parameters to common R style (where possible)
-* Made diffQ, diffQ2 less verbose by verbose parameter (Bug missing functionality)
-* Added options in diffQ and diffQ2 to plot
-* Added parameter to set the temperature range in mcaSmoother (Bug missing functionality)
-* Added parameter to resample the temperature with mcaSmoother (Bug missing functionality)
-* mcaSmoother gained an improved column header in the output
-* Added variable checks to many functions of the MBmca package (Bug missing functionality)
-* Added output of temperature resolution to diffQ and diffQ2 (Bug missing functionality)
-* Made output of adjusted R squared and normalized-root-mean-squared-error ("NRMSE") available (Bug missing functionality)
-* Added tests in diffQ (diffQ2 is directly effected by this) to check reliability of data and robustness (Bug missing functionality)
-* Function mcaPeaks added for preliminary data investigation (Bug missing functionality)
-* Corrected minor errors in help files
-* Added more examples to all help files
+* Depends: R (>= 3.0.0)
