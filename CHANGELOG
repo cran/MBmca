@@ -1,3 +1,16 @@
+Changes from Version 0.0.3-1 to 0.0.3-2 [April 25 2014
+* minor changes
+
+Changes from Version 0.0.3 to 0.0.3-1 [April 25 2014]
+* minor code improvements
+
+Changes from Version 0.0.2-1 to 0.0.3 [April 24 2014] 
+
+* several bug fixes
+* uses inder function from the chipPCR package to calculate the derivative
+* imporved some examples
+* minor code improvements
+
 Changes from Version 0.0.2 to 0.0.2-1 [May 30 2013] 
 
 * Bug fix release

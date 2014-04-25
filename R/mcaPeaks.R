@@ -36,10 +36,10 @@
 
 	      out <- data.frame(x, input.y)
 
-	      p.min <- data.frame(out[which(minima == TRUE),1], out[which(minima == TRUE),2])
+	      p.min <- data.frame(out[which(minima == TRUE), 1], out[which(minima == TRUE), 2])
 	      colnames(p.min) <- c("T (minima)", "F (minima)")
 
-	      p.max <- data.frame(out[which(maxima == TRUE),1], out[which(maxima == TRUE),2])
+	      p.max <- data.frame(out[which(maxima == TRUE), 1], out[which(maxima == TRUE), 2])
 	      colnames(p.max) <- c("T (maxima)", "F (maxima)")
 	      
 	      return(list(p.min = p.min, p.max = p.max))

@@ -33,11 +33,11 @@
 	#Plot the Coefficient of Variance
 	if (errplot) {
 		   if (CV) {
-			    plot(res[,1], res[,4], xlab = "T", ylab = "CV", col = col, pch = pch)
+			    plot(res[, 1], res[,4], xlab = "Temperature", ylab = "CV", col = col, pch = pch)
 		      #Plot the location with error bars.
 		      } else {
-			      plot(res[,1], res[,2], ylim = c(min(res[,2] - res[,3]), max(res[,2] + res[,3])), xlab = "T", ylab = "MFI", type = type)
-			      arrows(res[,1], res[,2] + res[,3], res[,1], res[,2] - res[,3], angle = 90, code = 3, length = length, col = col)
+			      plot(res[, 1], res[, 2], ylim = c(min(res[, 2] - res[, 3]), max(res[, 2] + res[, 3])), xlab = "Temperature", ylab = "MFI", type = type)
+			      arrows(res[, 1], res[, 2] + res[, 3], res[, 1], res[, 2] - res[, 3], angle = 90, code = 3, length = length, col = col)
 		      }
 		  }
 	#res is the an object of the type data.frame containing the temperature, location, deviation and coefficient of variance.

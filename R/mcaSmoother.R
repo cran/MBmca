@@ -32,14 +32,14 @@
 	# Test if temperature background range is unchanged. If not change to new values.
 	if (!is.null(bg) && (bgadj == TRUE)) {
 	    tmp.data <- data.frame(x,y)
-	    bg <- c(head(which(tmp.data[,1] >= bg[1]))[1]:tail(which(tmp.data[,1] <= bg[2]))[1])
+	    bg <- c(head(which(tmp.data[, 1] >= bg[1]))[1]:tail(which(tmp.data[, 1] <= bg[2]))[1])
 	}
 	# Test if temperature range for melting curve analysis is unchanged.
 	if (!is.null(Trange)) {
 	    tmp.data <- data.frame(x,y)
-	    range <- c(head(which(tmp.data[,1] >= Trange[1]))[1]:tail(which(tmp.data[,1] <= Trange[2]))[5])
-	    x <- tmp.data[range,1]
-	    y <- tmp.data[range,2]
+	    range <- c(head(which(tmp.data[, 1] >= Trange[1]))[1]:tail(which(tmp.data[, 1] <= Trange[2]))[5])
+	    x <- tmp.data[range, 1]
+	    y <- tmp.data[range, 2]
 	}
 	# Test if y contains missing values. In case of missing values a regression is 
 	# used to estimate the missing value.
@@ -73,7 +73,7 @@
 				    coefficients <- data.frame(lm(y.sp[bg] ~ x[bg])[1]) 
 			  } 
 			} 
-		  y.norm <- y.sp - (coefficients[2,1] * x + coefficients[1,1]) # Subtracts the linear trend from the smoothed values.
+		  y.norm <- y.sp - (coefficients[2, 1] * x + coefficients[1, 1]) # Subtracts the linear trend from the smoothed values.
 	} else {y.norm <- data.frame(y.sp)
 	}
 		

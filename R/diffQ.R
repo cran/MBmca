@@ -1,6 +1,7 @@
 "diffQ" <- function(xy, fct = min, fws = 8, col = 2, plot = FALSE, verbose =  FALSE, 
-			peak = FALSE, negderiv = TRUE, deriv = FALSE, derivlimits = FALSE, 
-			derivlimitsline = FALSE, vertiline = FALSE, rsm = FALSE)
+			peak = FALSE, negderiv = TRUE, deriv = FALSE, 
+			derivlimits = FALSE, derivlimitsline = FALSE, 
+			vertiline = FALSE, rsm = FALSE, inder = FALSE)
 { 
 	  # Test if fws (number of neighbors) is within a meaningful range.
 	  options(warn = -1)
@@ -11,8 +12,8 @@
 	  list.res <- list()
 
 	  # Take the x and y values from the object of type data.frame.
-	  x <- xy[,1]
-	  y <- xy[,2]
+	  x <- xy[, 1]
+	  y <- xy[, 2]
 
 	  options(warn = -1)
 	  # Test if x and y exist.
@@ -23,10 +24,11 @@
 
 	  # Determine the temperature resolution of the melting curve data
 	  deltaT <- vector()
-	  for (i in 1:(length(x) - 1)){
+	  for (i in 1L:(length(x) - 1)){
 	    tmp <- abs(x[i] - x[i + 1])
 	    deltaT <- c(deltaT,tmp)
 	  }
+	  
 	  deltaT.mean 	<- mean(deltaT)
 	  deltaT.sd 	<- sd(deltaT)
 	  deltaT.RSD	<- deltaT.sd/deltaT.mean * 100
@@ -40,21 +42,27 @@
 		xt <- (x[ind.up] + x[ind.low]) / 2
 		yt <- (y[ind.up] + y[ind.low]) / 2
 		xy <- data.frame(c(x, xt), c(y, yt))
-		xy <- xy[order (xy[,1]), ]
-		x <- xy[,1]
-		y <- xy[,2]
+		xy <- xy[order (xy[, 1]), ]
+		x <- xy[, 1]
+		y <- xy[, 2]
 	  }
 
 	  # Function to calculate the approximate derivative.
 	  if (negderiv) {y <- y * -1} 	# Change sign of curve data
-
-	  N <- length(x); low <- 1:2; up <- (N-1):N
-	  xQ <- x[3:length(x) - 1] 
-	  h <- (x[-low] - x[-up]) 	# Step size
-	  diffQ <- (y[-low] - y[-up]) / h
-
+	  
+	  N <- length(x); low <- 1:2; up <- (N - 1):N
+	  
+	  if (inder) {	inder.tmp <- inder(x, y, Nip = 1)
+			xQ <- inder.tmp$x
+			diffQ <- inder.tmp$`1st_der`
+		    
+	  } else {  xQ <- x[3:length(x) - 1] 
+		    h <- (x[-low] - x[-up]) 	# Step size
+		    diffQ <- (y[-low] - y[-up]) / h
+		    }
+		    
 	  out <- data.frame(xQ, diffQ)
-	  names(out) <- c("T", "d(F) / dT")
+	  names(out) <- c("Temperature", "d(F) / dT")
 	  
 	  # First: Find approximate range of neighbors for minimum or maximum of temperature peak.
 	  # Second: Calculate quadratic polynomial for ranges of minimum or maximum temperature peaks.
@@ -81,10 +89,10 @@
 	  Rsq <- matrix(NA, nrow = fws, ncol = 2)
 	  colnames(Rsq) <- c("fw", "Rsqr")
 	      for (i in 1:fws) {
-		Rsq[i,1] <- list.res[[i]][[1]]
-		Rsq[i,2] <- list.res[[i]][[8]]$adj.r.squared
+		Rsq[i, 1] <- list.res[[i]][[1]]
+		Rsq[i, 2] <- list.res[[i]][[8]]$adj.r.squared
 	      }
-	      list.res <- list.res[[which(Rsq[,2] == max(na.omit(Rsq[,2])))]]
+	      list.res <- list.res[[which(Rsq[, 2] == max(na.omit(Rsq[, 2])))]]
 	      names(list.res) <- list("fw", "limits.xQ", "limits.diffQ", "fluo.x", "lm2", "coeflm2", "coeflm2.y", "lm2sum")
 
 	      limits.xQ <- list.res$limits.xQ
@@ -118,9 +126,9 @@
 
 	  # Test if the calculated Tm and the approximate Tm differ strongly
 	  dev.dat <- data.frame(limits.xQ, limits.diffQ)
-	  dev <- dev.dat[which(dev.dat[,2] == max(dev.dat[,2])), ]
-	  dev.var <- sd(c(dev[1,1], abl)) / mean(c(dev[1,1], abl)) * 100
-	  dev.sum <- data.frame(dev.var, dev[1,1], abl)
+	  dev <- dev.dat[which(dev.dat[, 2] == max(dev.dat[, 2])), ]
+	  dev.var <- sd(c(dev[1, 1], abl)) / mean(c(dev[1, 1], abl)) * 100
+	  dev.sum <- data.frame(dev.var, dev[1, 1], abl)
 	  colnames(dev.sum) <- c("Relative Deviation (%)", "Approximate Tm", "Calculated Tm")
 	  rownames(dev.sum) <- NULL
 	  if (dev.sum[1] > 5) {
@@ -140,16 +148,16 @@
 	  NRMSE.res <- NRMSE(model = lm2, mes = limits.diffQ)
 
 	  # Simple test if data come from noise or presumably a melting curve
-	  if (shapiro.test(xy[,2])$p.value >= 0.0000001) {
+	  if (shapiro.test(xy[, 2])$p.value >= 0.0000001) {
 		    message("The distribution of the curve data indicates noise.\nThe data should be visually inspected with a plot (see examples of diffQ).")
 	      }
 	  # Simple test if polynomial fit performed accaptable
-	  if ((max(na.omit(Rsq[,2])) < 0.85))
-	      message(paste("The Tm calculation (fit, adj. R squared ~ ", round(max(na.omit(Rsq[,2])), 3), 
+	  if ((max(na.omit(Rsq[, 2])) < 0.85))
+	      message(paste("The Tm calculation (fit, adj. R squared ~ ", round(max(na.omit(Rsq[, 2])), 3), 
 			    ", NRMSE ~ ", round(NRMSE.res$NRMSE, 3), ") is not optimal presumably due to noisy data.\nCheck raw melting curve (see examples of diffQ).", sep = ""))
 
 	  if (plot) {
-		      plot(xQ, diffQ, xlab = "T", ylab = "-d(F) / dT", type = "b", col = col)
+		      plot(xQ, diffQ, xlab = "Temperature", ylab = "-d(F) / dT", type = "b", col = col)
 			points(limits.xQ, limits.diffQ, col = "orange", pch = 19)
 			curve(poly.fct, limits.xQ[1], limits.xQ[length(limits.xQ)], col = col, add = TRUE)
 			points(abl, y, pch = 19, col = 2)
