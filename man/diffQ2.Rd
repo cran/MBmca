@@ -226,6 +226,24 @@ temperature.}
 }
 
 \author{ Stefan Roediger }
+
+\references{
+A Highly Versatile Microscope Imaging Technology Platform for the Multiplex 
+Real-Time Detection of Biomolecules and Autoimmune Antibodies. S. Roediger, 
+P. Schierack, A. Boehm, J. Nitschke, I. Berger, U. Froemmel, C. Schmidt, M. 
+Ruhland, I. Schimke, D. Roggenbuck, W. Lehmann and C. Schroeder. 
+\emph{Advances in Biochemical Bioengineering/Biotechnology}. 133:33--74, 
+2013. \url{http://www.ncbi.nlm.nih.gov/pubmed/22437246}
+
+Nucleic acid detection based on the use of microbeads: a review. S. 
+Roediger, C. Liebsch, C. Schmidt, W. Lehmann, U. Resch-Genger, U. Schedler, 
+P. Schierack. \emph{Microchim Acta} 2014:1--18. DOI: 
+10.1007/s00604-014-1243-4
+
+Roediger S, Boehm A, Schimke I. Surface Melting Curve Analysis with R. 
+\emph{The R Journal} 2013;5:37--53.
+}
+
 \seealso{ \code{\link{diffQ}}, \code{\link{mcaSmoother}}}
 
 \examples{
@@ -243,9 +261,9 @@ diffQ2(tmp, fct = min, verbose = FALSE, plot = TRUE)
 # values to the matrix HRPT1
 data(MultiMelt)
 HPRT1 <- matrix(NA,12,4,
-	dimnames = list(colnames(MultiMelt[, c(2:13)]),
+	dimnames = list(colnames(MultiMelt[, 2L:13]),
 	    c("Fluo", "Tm", "Tm1D2", "Tm2D2")))
-for (i in 2:13) {
+for (i in 2L:13) {
        tmp <- mcaSmoother(MultiMelt[, 1], 
                      MultiMelt[, i])
        tmpTM <- diffQ2(tmp, fct = min, verbose = TRUE)
@@ -261,9 +279,9 @@ HPRT1
 
 data(MultiMelt)
 HPRT1 <- matrix(NA,12,4,
-	dimnames = list(colnames(MultiMelt[, c(2:13)]),
+	dimnames = list(colnames(MultiMelt[, 2L:13]),
 	    c("Fluo", "Tm", "Tm1D2", "Tm2D2")))
-for (i in 2:13) {
+for (i in 2L:13) {
        tmp <- mcaSmoother(MultiMelt[, 1], 
                      MultiMelt[, i])
        tmpTM <- diffQ2(tmp, fct = min, verbose = TRUE)

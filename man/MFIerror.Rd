@@ -37,6 +37,7 @@ deviation. }
   \item{errplot}{sets \code{MFIerror()} to plot the results (default). In 
 the default setting (\code{CV=FALSE}) the mean with the standard deviations 
 is plotted. }
+
   \item{type}{ is a graphical parameter setting the plot use lines, points 
 or both (see \code{\link{plot}}). }
   
@@ -46,7 +47,7 @@ the plot. }
   \item{length}{ \code{length} is a graphical parameter used to define the 
 length of the error bar used in the plot. }
   
-  \item{col}{ \code{col} is a graphical parameter used to define the length 
+  \item{col}{ \code{col} is a graphical parameter used to define the color 
 of the error bar used in the plot. }
 }
 
@@ -69,7 +70,7 @@ Stefan Roediger
 # Use Standard Deviation (SD) in the plot
 
 data(MultiMelt)
-MFIerror(MultiMelt[, 1], MultiMelt[, c(2:13)])
+MFIerror(MultiMelt[, 1], MultiMelt[, c(2L:13)])
 
 # Second Example
 # Temperature dependent relative variance of the refMFI using robust 
@@ -77,13 +78,14 @@ MFIerror(MultiMelt[, 1], MultiMelt[, c(2:13)])
 # errplot is set to FALSE in order to prevent the plot of the 
 # coefficient of variation versus the temperature.
 
-MFIerror(MultiMelt[, 1], MultiMelt[, c(2:13)], errplot = FALSE, 
+MFIerror(MultiMelt[, 1], MultiMelt[, c(2L:13)], errplot = FALSE, 
 	  RSD = TRUE, rob = TRUE)
 
 # Third Example
 # Temperature dependent relative variance of the refMFI using 
 # robust measures (Median, Median Absolute Deviation (MAD)).
-MFIerror(MultiMelt[, 1], MultiMelt[, c(2:13)], RSD=TRUE, rob=TRUE)
+MFIerror(MultiMelt[, 1], MultiMelt[, c(2L:13)], RSD = TRUE, 
+  rob = TRUE)
 }
 
 \keyword{ deviation }

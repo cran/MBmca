@@ -1,10 +1,10 @@
 \name{mcaSmoother}
 \alias{mcaSmoother}
 \title{
-Function to preprocess melting curve data.
+Function to pre-process melting curve data.
 }
 \description{
-The function \code{mcaSmoother()} is used for data preprocessing. 
+The function \code{mcaSmoother()} is used for data pre-processing. 
 Measurements from experimental systems may occasionally include missing 
 values (NA). \code{mcaSmoother()} uses \code{approx()} to fill up NAs under 
 the assumption that all measurements were equidistant. The original data 
@@ -33,9 +33,9 @@ considerably (e.g., due to high background, different reporter dyes,...),
 particularly in solution or for better comparison of results. 
 }
 
-\usage{ mcaSmoother(x, y, bgadj = FALSE, bg = NULL, 
-		    Trange = NULL, minmax = FALSE, df.fact = 0.95, 
-		    n = NULL) }
+\usage{ mcaSmoother(x, y, bgadj = FALSE, bg = NULL, Trange = NULL, 
+		    minmax = FALSE, df.fact = 0.95, n = NULL)
+}
 
 \arguments{
   \item{x}{is the column of a data frame for the temperature. }
@@ -61,10 +61,28 @@ the spline function and increases the temperature resolution of the melting
 curve data.}
 }
 \value{ \item{xy }{returns a \code{data.frame} with the temperature ("x") 
-in the first and the preprocessed fluorescence values ("y.sp") in the 
-second column.} }
+in the first and the pre-processed fluorescence values ("y.sp") in the 
+second column.} 
+}
 
 \author{ Stefan Roediger }
+
+\references{
+A Highly Versatile Microscope Imaging Technology Platform for the Multiplex 
+Real-Time Detection of Biomolecules and Autoimmune Antibodies. S. Roediger, 
+P. Schierack, A. Boehm, J. Nitschke, I. Berger, U. Froemmel, C. Schmidt, M. 
+Ruhland, I. Schimke, D. Roggenbuck, W. Lehmann and C. Schroeder. 
+\emph{Advances in Biochemical Bioengineering/Biotechnology}. 133:33--74, 
+2013. \url{http://www.ncbi.nlm.nih.gov/pubmed/22437246}
+
+Nucleic acid detection based on the use of microbeads: a review. S. 
+Roediger, C. Liebsch, C. Schmidt, W. Lehmann, U. Resch-Genger, U. Schedler, 
+P. Schierack. \emph{Microchim Acta} 2014:1--18. DOI: 
+10.1007/s00604-014-1243-4
+
+Roediger S, Boehm A, Schimke I. Surface Melting Curve Analysis with R. 
+\emph{The R Journal} 2013;5:37--53.
+}
 
 \seealso{ \code{\link{MFIerror}}, \code{\link{lmrob}}, 
 \code{\link{smooth.spline}}, \code{\link{spline}}, \code{\link{lm}}, 
@@ -199,8 +217,8 @@ legend(50, 1,
 # temperature range was limited between 45 to 90 degree Celsius for 
 # both simulations
 
-t1f1 <- mcaSmoother(t1,f1, Trange= c(45, 90), minmax = TRUE, n = 2)
-t2f2 <- mcaSmoother(t2,f2, Trange= c(45, 90), minmax = TRUE, n = 1)
+t1f1 <- mcaSmoother(t1, f1, Trange= c(45, 90), minmax = TRUE, n = 2)
+t2f2 <- mcaSmoother(t2, f2, Trange= c(45, 90), minmax = TRUE, n = 1)
 
 # Perform a MCA on both altered simulations. As expected, the melting
 # temperature are almost identical.

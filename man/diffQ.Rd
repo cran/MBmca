@@ -161,6 +161,23 @@ fitting function.}
 Stefan Roediger
 }
 
+\references{
+A Highly Versatile Microscope Imaging Technology Platform for the Multiplex 
+Real-Time Detection of Biomolecules and Autoimmune Antibodies. S. Roediger, 
+P. Schierack, A. Boehm, J. Nitschke, I. Berger, U. Froemmel, C. Schmidt, M. 
+Ruhland, I. Schimke, D. Roggenbuck, W. Lehmann and C. Schroeder. 
+\emph{Advances in Biochemical Bioengineering/Biotechnology}. 133:33--74, 
+2013. \url{http://www.ncbi.nlm.nih.gov/pubmed/22437246}
+
+Nucleic acid detection based on the use of microbeads: a review. S. 
+Roediger, C. Liebsch, C. Schmidt, W. Lehmann, U. Resch-Genger, U. Schedler, 
+P. Schierack. \emph{Microchim Acta} 2014:1--18. DOI: 
+10.1007/s00604-014-1243-4
+
+Roediger S, Boehm A, Schimke I. Surface Melting Curve Analysis with R. 
+\emph{The R Journal} 2013;5:37--53.
+}
+
 \seealso{ \code{\link{diffQ2}}, \code{\link{mcaSmoother}}}
 
 \examples{
@@ -170,10 +187,11 @@ Stefan Roediger
 
 data(MultiMelt)
 par(mfrow = c(1,2))
-for (i in c(2,14)) {
-	tmp <- mcaSmoother(MultiMelt[, 1], MultiMelt[, i])
-	diffQ(tmp, plot = TRUE)
-}
+sapply(2L:14, function(i) {
+        tmp <- mcaSmoother(MultiMelt[, 1], MultiMelt[, i])
+        diffQ(tmp, plot = TRUE)
+  }
+)
 par(mfrow = c(1,1))
 # Second example
 # Plot the first derivative of different samples from MultiMelt
@@ -181,18 +199,19 @@ par(mfrow = c(1,1))
 data(MultiMelt)
 
 # First create an empty plot
-plot(NA, NA, xlab= "Temperature", ylab="-d(refMFI)/d(T)",
-        main="Multiple melting peaks in a single plot", xlim=c(65,85),
-        ylim=c(-0.4,0.01), pch=19, cex=1.8)
+plot(NA, NA, xlab = "Temperature", ylab ="-d(refMFI)/d(T)",
+        main = "Multiple melting peaks in a single plot", xlim = c(65,85),
+        ylim = c(-0.4,0.01), pch = 19, cex = 1.8)
 # Prepossess the selected melting curve data (2,6,12) with mcaSmoother 
 # and apply them to diffQ. Note that the argument "plot" is FALSE
 # while other arguments like derivlimitsline or peak are TRUE. 
-for (i in c(2,6,12)) {
-      tmp <- mcaSmoother(MultiMelt[, 1], MultiMelt[, i], 
-			  bg = c(41,61), bgadj = TRUE)
-      diffQ(tmp, plot = FALSE, derivlimitsline = TRUE, deriv = TRUE, 
-	    peak = TRUE, derivlimits = TRUE, col = i, vertiline = TRUE)
-}
+sapply(c(2,6,12), function(i) {
+	tmp <- mcaSmoother(MultiMelt[, 1], MultiMelt[, i], 
+			    bg = c(41,61), bgadj = TRUE)
+	diffQ(tmp, plot = FALSE, derivlimitsline = TRUE, deriv = TRUE, 
+	      peak = TRUE, derivlimits = TRUE, col = i, vertiline = TRUE)
+  }
+)
 legend(65, -0.1, colnames(MultiMelt[, c(2,6,12)]), pch = c(15,15,15), 
 	col = c(2,6,12))
 

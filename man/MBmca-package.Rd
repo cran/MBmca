@@ -9,7 +9,7 @@ Microbead Surface Nucleic Acid Melting Curve Analysis
 investigate the interaction of double stranded nucleic acids. The MBmca 
 package provides data sets and lightweight utilities for nucleic acid 
 melting curve analysis and presentation on microbead surfaces. Methods 
-include melting curve data preprocessing (smooth, normalize, rotate, 
+include melting curve data pre-processing (smooth, normalize, rotate, 
 background subtraction), data inspection (comparison of multiplex melting 
 curves) with location parameters (mean, median), deviation parameters 
 (standard deviation, median absolute deviation, Coefficient of Variation) 
@@ -22,8 +22,8 @@ quality, smoothed curves and derivatives are available too.
 \tabular{ll}{
 Package: \tab MBmca\cr
 Type: \tab Package\cr
-Version: \tab 0.0.3-2\cr
-Date: \tab 2014-04-25\cr
+Version: \tab 0.0.3-3\cr
+Date: \tab 2014-06-25\cr
 License: GPL (>= 2)
 }
 

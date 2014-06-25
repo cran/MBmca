@@ -85,7 +85,7 @@ text(T.val, rep(-0.05, length(T.val)), round(T.val,0))
 # Use a temperature range from the plot to calculate the Tm of 
 # the maximum Trange is used between 37 and 74 degree Celsius
 
-tmp <- mcaSmoother(DMP[, 1], DMP[,6], minmax = TRUE, Trange = c(37,74), 
+tmp <- mcaSmoother(DMP[, 1], DMP[, 6], minmax = TRUE, Trange = c(37,74), 
 		    n = 2)
 # Tm 48.23, fluoTm 0.137
 diffQ(tmp, fct = max, plot = TRUE)

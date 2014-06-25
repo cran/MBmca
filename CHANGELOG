@@ -1,15 +1,28 @@
-Changes from Version 0.0.3-1 to 0.0.3-2 [April 25 2014
-* minor changes
+Changes from Version 0.0.3-2 to 0.0.3-3 [June 25 2014]
+* Maintenance release
+  - Better error prevention in MFIerr
+  - LazyData now true
+  - Loops in examples and functions vectorized
+  - Some code clean-ups
+  - Documentation fixes
+  - Some loops with memory use reduction
+  - inder method from chipPCR package now part of diffQ and diffQ2 
+    (improves finding of approximate first and second derivative 
+    maxima/minima)
+  - Dependency to chipPCR (>= 0.0.7)
+
+Changes from Version 0.0.3-1 to 0.0.3-2 [April 25 2014]
+* Minor changes
 
 Changes from Version 0.0.3 to 0.0.3-1 [April 25 2014]
-* minor code improvements
+* Minor code improvements
 
 Changes from Version 0.0.2-1 to 0.0.3 [April 24 2014] 
 
-* several bug fixes
-* uses inder function from the chipPCR package to calculate the derivative
-* imporved some examples
-* minor code improvements
+* Several bug fixes
+* Uses inder function from the chipPCR package to calculate the derivative
+* Improved some examples
+* Minor code improvements
 
 Changes from Version 0.0.2 to 0.0.2-1 [May 30 2013] 
 
