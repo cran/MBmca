@@ -17,7 +17,7 @@ diffQ2(xy, fct = max, fws = 8, col = 2, plot = FALSE,
        verbose = FALSE, peak = FALSE, deriv = FALSE, 
        negderiv = TRUE, derivlimits = FALSE, 
        derivlimitsline = FALSE, vertiline = FALSE, 
-       rsm = FALSE, inder = FALSE)
+       rsm = FALSE, inder = FALSE, warn = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -53,6 +53,11 @@ successive temperature steps. Note: mcaSmoother has the "n" parameter with
 a similar but advanced functionality.}
   \item{inder}{Interpolates derivatives using the five-point stencil. 
 		See \code{chipPCR} package for details.}
+
+\item{warn}{diffQ tries to keep the user as informed as possible
+  about the quality of the analysis. However, in some scenarios are
+  the warning and message about analysis not needed or disturbing. 
+  \code{warn} can be used to stop the flodding of the output.}
 }
 
 \value{

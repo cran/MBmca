@@ -22,8 +22,8 @@ quality, smoothed curves and derivatives are available too.
 \tabular{ll}{
 Package: \tab MBmca\cr
 Type: \tab Package\cr
-Version: \tab 0.0.3-3\cr
-Date: \tab 2014-06-25\cr
+Version: \tab 0.0.3-4\cr
+Date: \tab 2014-08-17\cr
 License: GPL (>= 2)
 }
 

@@ -34,7 +34,7 @@ presented in the examples as part of algorithms.
 
 \usage{
 diffQ(xy, fct = min, fws = 8, col = 2, plot = FALSE, 
-      verbose = FALSE, peak = FALSE, negderiv = TRUE, 
+      verbose = FALSE, warn = TRUE, peak = FALSE, negderiv = TRUE, 
       deriv = FALSE, derivlimits = FALSE,
       derivlimitsline = FALSE, vertiline = FALSE, rsm = FALSE, 
       inder = FALSE)
@@ -62,6 +62,11 @@ instead (see examples).}
   \item{verbose}{shows additional information (e.g., approximate 
 derivative, ranges used for calculation, approximate Tm) of the 
 calculation. }
+
+  \item{warn}{diffQ tries to keep the user as informed as possible
+  about the quality of the analysis. However, in some scenarios are
+  the warning and message about analysis not needed or disturbing. 
+  \code{warn} can be used to stop the flodding of the output.}
 		  
   \item{peak}{shows the peak in the plot (see examples). }
   

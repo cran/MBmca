@@ -1,8 +1,8 @@
 "diffQ" <- function(xy, fct = min, fws = 8, col = 2, plot = FALSE, 
-		    verbose =  FALSE, peak = FALSE, negderiv = TRUE, 
-		    deriv = FALSE, derivlimits = FALSE, 
-		    derivlimitsline = FALSE, vertiline = FALSE, 
-		    rsm = FALSE, inder = FALSE) { 
+		    verbose =  FALSE, warn = TRUE, 
+		    peak = FALSE, negderiv = TRUE, deriv = FALSE, 
+		    derivlimits = FALSE, derivlimitsline = FALSE, 
+		    vertiline = FALSE, rsm = FALSE, inder = FALSE) { 
   # Test if fws (number of neighbors) is within a meaningful range.
   options(warn = -1)
     fws <- round(fws)
@@ -153,7 +153,8 @@
   colnames(dev.sum) <- c("Relative Deviation (%)", "Approximate Tm", 
 			 "Calculated Tm")
   rownames(dev.sum) <- NULL
-  if (dev.sum[1] > 5) {
+  
+  if (warn && dev.sum[1] > 5) {
       message("Approximate and calculated Tm varri. This is an expected behaviour \nbut the calculation should be confirmed with a plot (see examples of diffQ).")
       print(dev.sum)
   }
@@ -172,11 +173,11 @@
   NRMSE.res <- NRMSE(model = lm2, mes = limits.diffQ)
 
   # Simple test if data come from noise or presumably a melting curve
-  if (shapiro.test(xy[, 2])$p.value >= 0.0000001) {
+  if (warn && shapiro.test(xy[, 2])$p.value >= 0.0000001) {
       message("The distribution of the curve data indicates noise.\nThe data should be visually inspected with a plot (see examples of diffQ).")
   }
   # Simple test if polynomial fit performed accaptable
-  if ((max(na.omit(Rsq[, 2])) < 0.85))
+  if (warn && (max(na.omit(Rsq[, 2])) < 0.85))
       message(paste0("The Tm calculation (fit, adj. R squared ~ ", 
 		    round(max(na.omit(Rsq[, 2])), 3), 
 		    ", NRMSE ~ ", round(NRMSE.res$NRMSE, 3), 

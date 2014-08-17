@@ -1,8 +1,8 @@
 "diffQ2" <- function(xy, fct = max, fws = 8, col = 2, plot = FALSE, 
-		     verbose = FALSE, peak = FALSE, deriv = FALSE, 
-		     negderiv = TRUE, derivlimits = FALSE, 
+		     verbose = FALSE, peak = FALSE, 
+		     deriv = FALSE, negderiv = TRUE, derivlimits = FALSE, 
 		     derivlimitsline = FALSE, vertiline = FALSE, 
-		     rsm = FALSE, inder = FALSE) {
+		     rsm = FALSE, inder = FALSE, warn = TRUE) {
   # Test if fws (number of neighbors) is within a meaningful range.
   options(warn = -1)
     fws <- round(fws)
@@ -14,7 +14,8 @@
   # Calculates the first derivative and provides the starting information 
   # for the second derivative.
   TmD1 <- diffQ(xy, fct = fct, fws = fws, negderiv = negderiv, 
-		verbose = TRUE, rsm = rsm, inder = inder)
+		verbose = TRUE, rsm = rsm, inder = inder, 
+		warn = warn)
 
   if (TmD1[["temperature"]][["mean.T.delta"]] >= 0.5) {
       tmp.xy <- predict(smooth.spline(TmD1$xy[, 1], TmD1$xy[, 2]), 
@@ -31,13 +32,15 @@
   Tm1D2 <- diffQ(xy.smoothed, fct = min, fws = fws, verbose =  TRUE, 
 		 col = col, peak = peak, deriv = deriv, negderiv = FALSE, 
 		 derivlimits = derivlimits, derivlimitsline = derivlimitsline, 
-		 vertiline = vertiline, inder = inder)
+		 vertiline = vertiline, inder = inder, 
+		 warn = warn)
   # Calculates the second derivative and from the first derivative for the 
   # maximum of the melting curve.
   Tm2D2 <- diffQ(xy.smoothed, fct = max, fws = fws, verbose =  TRUE, 
 		 col = col, peak = peak, deriv = deriv, negderiv = FALSE, 
 		 derivlimits = derivlimits, derivlimitsline = derivlimitsline, 
-		 vertiline = vertiline, inder = inder)
+		 vertiline = vertiline, inder = inder, 
+		 warn = warn)
   
   # Vectors of the two melting temperatures of the second derivative.
   x <- c(Tm1D2[["Tm"]], Tm2D2[["Tm"]])
