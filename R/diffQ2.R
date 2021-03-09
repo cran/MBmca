@@ -6,7 +6,7 @@
 #' \code{diffQ2()} return objects of the class \code{list}.  To accessing
 #' components of lists is done as described elsewhere either be name or by
 #' number. \code{diffQ2} has no standalone plot function. For sophisticated
-#' analysis and plots its recommended to use \code{diffQ2} as presented in the
+#' analysis and plots it is recommended to use \code{diffQ2} as presented in the
 #' examples as part of algorithms.
 #' 
 #' 
@@ -46,7 +46,7 @@
 #' @param warn diffQ tries to keep the user as informed as possible about the
 #' quality of the analysis. However, in some scenarios are the warning and
 #' message about analysis not needed or disturbing.  \code{warn} can be used to
-#' stop the flodding of the output.
+#' stop the swapping of the output.
 #' @return
 #' 
 #' \item{$TmD1}{\code{TmD1} returns a comprehensive list (if parameter verbose
@@ -137,7 +137,7 @@
 #' second derivative.}
 #' 
 #' \item{$Tm1D2$devsum}{ returns measures to show the difference between the
-#' approximate and alculated melting temperature of the "left" melting
+#' approximate and calculated melting temperature of the "left" melting
 #' temperature ("Tm1D2") from the second derivative.}
 #' 
 #' \item{$Tm1D2$fit}{returns the summary of the results of the quadratic model
@@ -221,7 +221,7 @@
 #' S. Roediger, P. Schierack, A. Boehm, J. Nitschke, I. Berger, U. Froemmel, C.
 #' Schmidt, M. Ruhland, I. Schimke, D. Roggenbuck, W. Lehmann and C.
 #' Schroeder.  \emph{Advances in Biochemical Bioengineering/Biotechnology}.
-#' 133:33--74, 2013. \url{http://www.ncbi.nlm.nih.gov/pubmed/22437246}
+#' 133:33--74, 2013. \url{https://pubmed.ncbi.nlm.nih.gov/22437246/}
 #' 
 #' Nucleic acid detection based on the use of microbeads: a review. S.
 #' Roediger, C. Liebsch, C. Schmidt, W. Lehmann, U. Resch-Genger, U. Schedler,
@@ -230,13 +230,18 @@
 #' 
 #' Roediger S, Boehm A, Schimke I. Surface Melting Curve Analysis with R.
 #' \emph{The R Journal} 2013;5:37--53.
+#'
+#' Roediger S et al. R as an Environment for the Reproducible 
+#' Analysis of DNA Amplification Experiments. \emph{The R Journal} 
+#' 2015;7:127--150.
 #' @keywords Tm
 #' @examples
 #' 
+#' default.par <- par(no.readonly = TRUE)
 #' # First Example
 #' # Plot the first and the second derivative melting curves of MLC-2v
 #' # for a single melting curve. Should give a warning message but the graph 
-#' # will show you that the calculation is ok
+#' # will show you that the calculation is OK
 #' data(MultiMelt)
 #' tmp <- mcaSmoother(MultiMelt[, 1], MultiMelt[, 14])
 #' diffQ2(tmp, fct = min, verbose = FALSE, plot = TRUE)
@@ -294,7 +299,8 @@
 #' tmp <- mcaSmoother(MultiMelt[, 1], MultiMelt[, 14])
 #' diffQ2(tmp, fct = min, verbose = FALSE, plot = TRUE, inder = FALSE)
 #' diffQ2(tmp, fct = min, verbose = FALSE, plot = TRUE, inder = TRUE)
-#' par(mfrow = c(1,1))
+#'
+#' par(default.par)
 #' 
 #' @export diffQ2
 diffQ2 <- function(xy, fct = max, fws = 8, col = 2, plot = FALSE, 
@@ -328,7 +334,7 @@ diffQ2 <- function(xy, fct = max, fws = 8, col = 2, plot = FALSE,
   
   # Calculates the second derivative and from the first derivative for the 
   # minimum of the melting curve.
-  Tm1D2 <- diffQ(xy.smoothed, fct = min, fws = fws, verbose =  TRUE, 
+  Tm1D2 <- diffQ(xy.smoothed, fct = min, fws = fws, verbose = TRUE, 
                  col = col, peak = peak, deriv = deriv, negderiv = FALSE, 
                  derivlimits = derivlimits, derivlimitsline = derivlimitsline, 
                  vertiline = vertiline, inder = inder, 
@@ -355,6 +361,7 @@ diffQ2 <- function(xy, fct = max, fws = 8, col = 2, plot = FALSE,
   
   
   if (plot) {
+    default.par <- par(no.readonly = TRUE)
     # Plot the first derivative
     par(fig = c(0,1,0.475,1))
     plot(TmD1[["xy"]], xlab = "Temperature", ylab = "-d(F) / dT", type = "b")
@@ -379,6 +386,7 @@ diffQ2 <- function(xy, fct = max, fws = 8, col = 2, plot = FALSE,
     points(Tm2D2[["Tm"]], Tm2D2[["fluo.x"]], pch = 19, col = 2)
     curve(poly.fct.Tm1D2, Tm1D2[["limits.xQ"]][1], Tm1D2[["limits.xQ"]][length(Tm1D2[["limits.xQ"]])], col = "red", add = TRUE)
     curve(poly.fct.Tm2D2, Tm2D2[["limits.xQ"]][1], Tm2D2[["limits.xQ"]][length(Tm2D2[["limits.xQ"]])], col = "red", add = TRUE)
+    par(default.par)
   }
   
   # Returns an object of the type list containing the data and data.frames from above including the approximate 

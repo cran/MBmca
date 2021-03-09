@@ -45,7 +45,7 @@
 #' @param warn diffQ tries to keep the user as informed as possible about the
 #' quality of the analysis. However, in some scenarios are the warning and
 #' message about analysis not needed or disturbing.  \code{warn} can be used to
-#' stop the flodding of the output.
+#' stop the swapping of the output.
 #' @param peak shows the peak in the plot (see examples).
 #' @param negderiv uses the positive first derivative instead of the negative.
 #' @param deriv shows the first derivative with the color assigned to
@@ -76,7 +76,6 @@
 #' 0.08 and the adjusted R-squared is less than 0.85. A relative deviation
 #' larger than 10 percent will result in a warning. Reducing fws might improve
 #' the result. }
-#' 
 #' \item{Tm }{returns the calculated melting temperature ("Tm").}
 #' 
 #' \item{fluoTm }{returns the calculated fluorescence at the calculated melting
@@ -134,7 +133,7 @@
 #' S. Roediger, P. Schierack, A. Boehm, J. Nitschke, I. Berger, U. Froemmel, C.
 #' Schmidt, M. Ruhland, I. Schimke, D. Roggenbuck, W. Lehmann and C.
 #' Schroeder.  \emph{Advances in Biochemical Bioengineering/Biotechnology}.
-#' 133:33--74, 2013. \url{http://www.ncbi.nlm.nih.gov/pubmed/22437246}
+#' 133:33--74, 2013. \url{https://pubmed.ncbi.nlm.nih.gov/22437246/}
 #' 
 #' Nucleic acid detection based on the use of microbeads: a review. S.
 #' Roediger, C. Liebsch, C. Schmidt, W. Lehmann, U. Resch-Genger, U. Schedler,
@@ -143,6 +142,10 @@
 #' 
 #' Roediger S, Boehm A, Schimke I. Surface Melting Curve Analysis with R.
 #' \emph{The R Journal} 2013;5:37--53.
+#' 
+#' Roediger S et al. R as an Environment for the Reproducible 
+#' Analysis of DNA Amplification Experiments. \emph{The R Journal} 
+#' 2015;7:127--150.
 #' @keywords melting Tm
 #' @examples
 #' 
@@ -150,6 +153,8 @@
 #' # Plot the first derivative of different samples for single melting curve
 #' # data. Note that the argument "plot" is TRUE.
 #' 
+#' default.par <- par(no.readonly = TRUE)
+#'
 #' data(MultiMelt)
 #' par(mfrow = c(1,2))
 #' sapply(2L:14, function(i) {
@@ -255,7 +260,7 @@
 #' 
 #' diffQ(tmp, plot = TRUE, rsm = TRUE)$Tm
 #'   text(60, -0.15, "with rsm parameter")
-#' par(mfrow = c(1,1))
+#' par(default.par)
 #' 
 #' @export diffQ
 "diffQ" <- function(xy, fct = min, fws = 8, col = 2, plot = FALSE, 
