@@ -1,5 +1,5 @@
-9337aa54bd3f1de4dc1e5bd59b007aae *CHANGELOG
-5f2f6b09aff45d8bc87c8ced06b262dc *DESCRIPTION
+81ab58b994cedfb42c73a5a10d27d65f *CHANGELOG
+255454839769246856c3aecd1317b16b *DESCRIPTION
 ed4618527c4ee8c3af50c20f54b92424 *NAMESPACE
 7210920d60be5e6bdaad63bcc7eade16 *R/MBmca-package.R
 b341f5b2d23246cfee093b9938ddfbbd *R/MFIerror.R
@@ -11,7 +11,7 @@ b341f5b2d23246cfee093b9938ddfbbd *R/MFIerror.R
 d1d4705c99dc3386ca761092904421a1 *R/print.diffQ2object.R
 a94dcd17d7b443efd88d7876e822565c *R/print.diffQobject.R
 9d457a354630848697d99fdcca776a28 *README.md
-61ac74120df28133f0c6ff4d5f458e65 *build/vignette.rds
+42a7cc55b205ca749fd8d66b8d2e2677 *build/vignette.rds
 380e48e3fc1108379d48c6e3a5082b53 *data/DMP.rda
 628ad79786931277d3263c02fda5c6bf *data/DualHyb.rda
 8f4c31d8122be661db159b31f8e7af10 *data/MultiMelt.rda
@@ -19,8 +19,8 @@ a94dcd17d7b443efd88d7876e822565c *R/print.diffQobject.R
 bcf01d62eccead9a0c8276606f892c53 *inst/MBmca_logo.png
 5c180d497588571c0711115d43f2c2e9 *inst/NEWS.md
 f79cc70ba21f04fa7fe0c964b4703f9e *inst/WORDLIST
-724b5d46d15569a14851c002c138a850 *inst/doc/MBmca.Rmd
-ab9a57564039294f0523f69e2f51f0c2 *inst/doc/MBmca.pdf
+33540c1c076369a0eb902e92a7308f60 *inst/doc/MBmca.Rmd
+e90517063d0e3a1b767f41ab7146c192 *inst/doc/MBmca.pdf
 563f6bfa5eae3da08a143164b39f936b *man/DMP.Rd
 87025dfac3a7e8a84cfad0d2e7920638 *man/DualHyb.Rd
 a3ea2b8b3101198489383f92820f531e *man/MBmca-package.Rd
@@ -31,5 +31,5 @@ ef0d76b06ade2401041ba2af45d261f6 *man/MultiMelt.Rd
 6a6c369bf1a3c534fdc3b42f1b1d8f97 *man/mcaPeaks.Rd
 96c86816010f2dba5ca7a33646e59c43 *man/mcaSmoother.Rd
 0622a97a2aaa3c342f09636052c2d7f5 *tests/spelling.R
-724b5d46d15569a14851c002c138a850 *vignettes/MBmca.Rmd
-5efca7396351cd6e01af648ca7ea7ea4 *vignettes/MBmca.bib
+33540c1c076369a0eb902e92a7308f60 *vignettes/MBmca.Rmd
+0c8cf589b39764b82a81268f395cd02d *vignettes/MBmca.bib

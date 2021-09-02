@@ -1,6 +1,6 @@
 ---
 title: "Microbead Surface Nucleic Acid Melting Curve Analysis"
-author: "The chipPCR package authors"
+author: "The MBmca package authors"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::pdf_document:
