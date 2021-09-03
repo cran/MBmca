@@ -37,7 +37,7 @@ described.
 The software has been lost in conjunction with the VideoScan platform. This is a 
 fully automatic multispectral fluorescence microscope for the multiplex analysis 
 of biomarkers [@roediger_highly_2013]. Applications of the platform can be found 
-in personalized medicine and life sciences [@rodiger_nucleic_2014; @rodiger_quantification_2018; @willitzki_new_2012].
+in personalized medicine and life sciences [@rodiger_nucleic_2014; @willitzki_new_2012].
 
 Over the years, a lot of knowledge has accumulated on the analysis of data from 
 quantitative PCRs and melting curves. Thus, we could show that the use of 
